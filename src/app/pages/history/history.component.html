@@ -1,0 +1,187 @@
+<app-loading *ngIf="isInProgress"></app-loading>
+<div class="row m-5">
+  <div class="col-1 d-none d-md-block">
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+    <div class="card">
+      <div class="card-body base-bg-color">
+        <div  class="card-body base-bg-color">
+          <div *ngIf="!histories || histories.length <= 0" class="mt-3 mr-5 ml-5">
+            <div class="alert alert-danger" role="alert">
+                No Results Found.
+            </div>
+        </div>
+
+        <div *ngIf="totalPages > 1" class="row col-12 pb-3">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <nav class="text-left text-white">
+              <label>Total Pages: {{totalPages}}</label>
+              <label class="ml-5">Current Page: {{currentPage}}</label>
+            </nav>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right">
+            <nav *ngIf="totalPages > 1" class="text-right">
+              <div class="btn-group" role="group">
+                <button [disabled]="currentPage <= 1" (click)="goToFirst()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-fast-backward pl-2 pr-2"></i></button>
+                <button [disabled]="currentPage <= 1" (click)="goToPrevious()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-step-backward pl-2 pr-2"></i></button>
+                <button [disabled]="currentPage >= totalPages" (click)="goToNext()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-step-forward pl-2 pr-2"></i></button>
+                <button [disabled]="currentPage >= totalPages" (click)="goToLast()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-fast-forward pl-2 pr-2"></i></button>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <table *ngIf="!!histories && histories.length > 0" class="table table-success table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Serial No</th>
+              <th scope="col" class="text-center">Scannded On</th>
+              <th scope="col" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let history of histories">
+              <th scope="row" class="text-center">{{history.scanResultIdentity.scanResultId}}</th>
+              <td class="text-center">{{history.createdDate | date:'dd-MMM-yyyy hh:mm:ss a'}}</td>
+              <td class="text-center">
+                <button (click)="openModal(history)" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">View Result</button>
+                <button (click)="downloadResult(history)" type="button" class="btn btn-danger btn-sm ml-3"  >Download</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="totalPages > 1" class="row col-12">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <nav class="text-left text-white">
+              <label>Total Pages: {{totalPages}}</label>
+              <label class="ml-5">Current Page: {{currentPage}}</label>
+            </nav>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right">
+            <nav *ngIf="totalPages > 1" class="text-right">
+              <div class="btn-group" role="group">
+                <button [disabled]="currentPage <= 1" (click)="goToFirst()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-fast-backward pl-2 pr-2"></i></button>
+                <button [disabled]="currentPage <= 1" (click)="goToPrevious()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-step-backward pl-2 pr-2"></i></button>
+                <button [disabled]="currentPage >= totalPages" (click)="goToNext()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-step-forward pl-2 pr-2"></i></button>
+                <button [disabled]="currentPage >= totalPages" (click)="goToLast()" type="button"
+                  class="btn btn-sm btn-light"><i class="fas fa-fast-forward pl-2 pr-2"></i></button>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-1 d-none d-md-block">
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Scan Result</h5>
+        <button (click)="closeModal()" type="button"  data-bs-dismiss="modal" aria-label="Close"><i class="far fa-times-circle text-danger"></i></button>
+      </div>
+      <div class="modal-body">
+       
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <!-- <div *ngIf="!!searchKeys && searchKeys.length > 0"> -->
+      
+      
+                  <div class="card">
+                    <div *ngIf="noResultFound === true" class="card-body base-bg-color">
+                      <div  class="mt-3 mr-5 ml-5">
+                        <div class="alert alert-danger" role="alert">
+                            No Results Found.
+                        </div>
+                    </div>
+                    </div>
+
+                      <div *ngIf="noResultFound === false" class="card-body base-bg-color">
+                         
+                          <div class="row col-12 mb-3">
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                              <select (change)="changeKey($event)" class="form-select form-control " aria-label="Default select example">
+                                  <option *ngFor="let key of searchKeys" value="{{key}}">{{key}}</option>
+                                </select>
+                          </div>
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right text-xs-left text-sm-left">
+                              <button class="btn btn-fill btn-danger" (click)="downloadReport()">Download</button>
+                          </div>
+                              
+                          </div>
+                          <div class="row col-12">
+                              <div class="row col-xl-6 col-l-6 col-md-6 col-sm-12 col-xs-12 text-white pb-1">
+                                  <span class="scan-result-title">Search Results: <span class="result-key-text">{{selectedKey}}</span></span>
+                              </div>
+                              <!-- <div class="row col-xl-6 col-l-6 col-md-6 col-sm-12 col-xs-12 text-white pb-1 text-right">
+                                  <span class="scan-result-title">Search Results: <span class="result-key-text">{{selectedKey}}</span></span>
+                              </div> -->
+                          </div>
+                          
+                          <div *ngIf="!!categories && categories.length > 0" class="row col-12">
+      
+                              <div *ngFor="let category of categories;"
+                                  class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 border-bottom p-2 pl-4 bg-light">
+                                  <span class="category-label">{{category.key}} </span>
+                                  <span *ngIf="!!category.key" class="category-value">: {{category.value}}</span>
+                              </div>
+                          </div>
+                          <div *ngIf="!!results && results.length > 0" class="row col-12 m-2">
+                             
+                                  <div *ngFor="let result of results" class="row col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 border-bottom p-2 pl-4 bg-light text-nowrap">
+                                      <div class="col-4 text-capitalize">
+                                          {{result.key}}
+                                      </div>
+                                      <div class="col-1">
+                                          <span>
+                                              <i *ngIf="result.category==='harmless'" class="fas fa-check-circle result-success-icon pr-1"></i>
+                                              <i *ngIf="result.category==='malicious'" class="fas fa-times-circle result-error-icon pr-1"></i>
+                                              <!-- <i class="far fa-question-circle"></i> -->
+                                              <i *ngIf="result.category==='undetected' && !!result.result" class="fas fa-question-circle result-undetected-icon pr-1"></i>
+                                              <i *ngIf="result.category==='undetected' && !result.result" class="fas fa-check-circle result-success-icon pr-1"></i>
+                                              <i *ngIf="result.category==='type-unsupported'" class="far fa-eye-slash result-undetected-icon pr-1"></i>
+                                          </span>
+                                      </div>
+                                      <div class="col-7 text-capitalize">
+                                          <span *ngIf="!!result.result">{{result.result}}</span>
+                                          <span *ngIf="!result.result">{{result.category}}</span>
+                                      </div>
+                                      
+                                  </div>
+                           
+                              
+                          </div>
+      
+      
+                      </div>
+                  </div>
+              <!-- </div> -->
+          </div>
+      
+      </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-fill btn-danger" (click)="downloadReport()">Download</button>
+        <button (click)="closeModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button  type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+Arguments: 
+  C:\Program Files (x86)\nodejs\node.exe C:\Users\DivyaS\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add cookie-parser
+
+PATH: 
+  C:\Users\DivyaS\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\DivyaS\AppData\Local\Programs\Python\Python39\;C:\Program Files (x86)\RSA SecurID Token Common;C:\Program Files\RSA SecurID Token Common;C:\app\DivyaS\virtual\product\12.2.0\dbhome_1\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Cloud Foundry;C:\Program Files\IBM\Cloud\bin;C:\Program Files\Microsoft VS Code\bin;C:\Software\apache-maven-3.6.0-bin\apache-maven-3.6.0;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\node.exe;C:\Program Files\wkhtmltopdf\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Users\DivyaS\AppData\Roaming\npm;C:\Program Files (x86)\nodejs\;C:\ProgramData\chocolatey\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\RSA SecurID Token Common\;C:\Program Files\wkhtmltopdf\bin;C:\Users\DivyaS\AppData\Roaming\npm;C:\Users\DivyaS\AppData\Local\GitHubDesktop\bin
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  14.17.0
+
+Platform: 
+  win32 ia32
+
+Trace: 
+  Error: https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Users\DivyaS\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141390:19)
+      at Object.onceWrapper (events.js:482:28)
+      at ClientRequest.emit (events.js:376:20)
+      at TLSSocket.emitRequestTimeout (_http_client.js:790:9)
+      at Object.onceWrapper (events.js:482:28)
+      at TLSSocket.emit (events.js:388:22)
+      at TLSSocket.Socket._onTimeout (net.js:483:8)
+      at listOnTimeout (internal/timers.js:555:17)
+      at processTimers (internal/timers.js:498:7)
+
+npm manifest: 
+  {
+    "name": "vantage-sv",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node app",
+      "dev": "nodemon app",
+      "serverstart": "DEBUG=vantage-sv:* npm run dev",
+      "audit": "npm audit --registry=https://registry.npmjs.org",
+      "lint": "./node_modules/.bin/eslint .",
+      "test:jenkins": "mocha --reporter mocha-sonar-generic-test-coverage tests/*.js --exit",
+      "test": "mocha --reporter mocha-junit-reporter tests/*.js --exit",
+      "build:docker": "docker build -t mss-nodejs-ms .",
+      "start:docker": "docker run --env PORT=3000 -p 3000:3000 mss-nodejs-ms:latest"
+    },
+    "dependencies": {
+      "@angular/animations": "~11.0.6",
+      "@angular/common": "~11.0.6",
+      "@angular/compiler": "~11.0.6",
+      "@angular/core": "~11.0.6",
+      "@angular/forms": "~11.0.6",
+      "@angular/platform-browser": "~11.0.6",
+      "@angular/platform-browser-dynamic": "~11.0.6",
+      "@angular/router": "~11.0.6",
+      "@banzaicloud/service-tools": "^3.0.0-beta.1",
+      "@fortawesome/fontawesome-free": "^5.15.4",
+      "@fortawesome/fontawesome-svg-core": "^1.2.36",
+      "@types/jquery": "^3.5.5",
+      "angular-file-uploader": "^7.0.3",
+      "bootstrap": "^4.5.3",
+      "cookie-parser": "^1.4.5",
+      "express": "^4.17.1",
+      "express-prom-bundle": "^6.4.1",
+      "jquery": "^3.5.1",
+      "moment": "^2.29.1",
+      "popper.js": "^1.16.1",
+      "prom-client": "^13.2.0",
+      "rxjs": "~6.6.0",
+      "set-cookie-parser": "^2.4.8",
+      "tslib": "^2.3.1",
+      "zone.js": "~0.10.2"
+    },
+    "devDependencies": {
+      "@angular-devkit/build-angular": "~0.1100.6",
+      "@angular/cli": "^11.2.14",
+      "@angular/compiler-cli": "~11.0.6",
+      "@types/jasmine": "~3.6.0",
+      "@types/node": "^12.20.20",
+      "codelyzer": "^6.0.0",
+      "jasmine-core": "~3.6.0",
+      "jasmine-spec-reporter": "~5.0.0",
+      "karma": "~5.1.0",
+      "karma-chrome-launcher": "~3.1.0",
+      "karma-coverage": "~2.0.3",
+      "karma-jasmine": "~4.0.0",
+      "karma-jasmine-html-reporter": "^1.5.0",
+      "protractor": "~7.0.0",
+      "ts-node": "~8.3.0",
+      "tslint": "~6.1.0",
+      "typescript": "~4.0.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

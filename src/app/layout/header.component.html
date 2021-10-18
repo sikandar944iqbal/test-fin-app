@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark base-bg-color navbar-expand-lg">
+    <div class="container-fluid px-0">
+      <a class="navbar-brand" routerLink="/home/home"><img src="assets/images/Security.png" height="50px"></a>
+      <div class="row w-100">
+        <div class="col-2">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation" (click)="isShown = !isShown" >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+  
+        <div class="col-10">
+          <div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mt-2 mt-lg-0">
+              <li class="nav-item menu-item">
+                <a class="nav-link" routerLink="/home/home" routerLinkActive="active" (click)="isShown = false" >Home</a>
+              </li>
+              <!-- <li class="nav-item menu-item">
+                <a class="nav-link" routerLink="/about" routerLinkActive="active"  (click)="isShown = false" >About</a>
+              </li> -->
+              <li class="nav-item menu-item">
+                <a class="nav-link" routerLink="/home/history" routerLinkActive="active" (click)="isShown = false" >History</a>
+              </li>
+              <li class="nav-item menu-item">
+                <a class="nav-link text-danger" routerLink="/login" routerLinkActive="active" (click)="isShown = false" >Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

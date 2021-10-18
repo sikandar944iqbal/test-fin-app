@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p #{title} API
+  dl
+  dt
+    a(href='api-docs') /api-docs
+  dd API documentation (OpenApi3 / Swagger)
+  dt
+    a(href='readiness') /readiness
+    dd Kubernetes readiness endpoint
+  dt
+    a(href='liveness') /liveness
+    dd Kubernetes liveness endpoint  
+  dt
+    a(href='info') /info
+    dd Build info
+  

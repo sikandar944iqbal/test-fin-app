@@ -1,0 +1,44 @@
+<div class="row m-5">
+    <div class="col-3 d-none d-md-block">
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card">
+            <div class="card-body base-bg-color">
+                <form [formGroup]="loginForm" class="m-5" (submit)="createAccount()">
+                    <div class="mr-5 ml-5">
+                        <label for="fullname" class="form-label text-light">FullName</label>
+                        <input type="text" formControlName="fullname" class="form-control" id="fullname"
+                            placeholder="Enter your name">
+                    </div>
+                    <div class="mt-3 mr-5 ml-5">
+                        <label for="username" class="form-label text-light">UserName</label>
+                        <input type="email" formControlName="username" class="form-control" id="username"
+                            placeholder="Enter your password">
+                    </div>
+                    <div class="mt-3 mr-5 ml-5">
+                        <label for="password" class="form-label text-light">Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="password"
+                            placeholder="Enter your password">
+                    </div>
+                    <div class="mt-3 mr-5 ml-5">
+                        <label for="confirmPassword" class="form-label text-light">Confirm Password</label>
+                        <input type="confirmPassword" formControlName="confirmPassword" class="form-control"
+                            id="confirmPassword" placeholder="Enter confirm password">
+                    </div>
+
+                    <div class="mt-3 mr-5 ml-5 text-center">
+                        <button type="submit" class="btn btn-fill btn-light">Create Account</button>
+                    </div>
+                    <div class="mt-3 mr-5 ml-5 text-center">
+                        <button type="button" routerLink="/login" class="btn btn-link text-light">Have account already?</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 d-none d-md-block">
+
+    </div>
+</div>

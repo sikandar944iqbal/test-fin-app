@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+$bg-color: #000066;
+
+.base-bg-color {
+    background-color: $bg-color !important;
+}
+
+.min-h-300 {
+    min-height: 300px !important;
+}
+
+.result-success-icon {
+    color: #16c216;
+    font-size: 28px !important;
+    padding-right: 2px !important;
+}
+
+.result-error-icon {
+    color: #f50404;
+    font-size: 28px !important;
+    padding-right: 2px !important;
+}
+
+.result-undetected-icon {
+    color: #cecccc;
+    font-size: 28px !important;
+    padding-right: 2px !important;
+}
+
+.menu-item {
+    font-weight: 800 !important;
+}
+
+.text-right {
+    text-align: right !important;
+}

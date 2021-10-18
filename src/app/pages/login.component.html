@@ -1,0 +1,51 @@
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div class="row m-5">
+    <div class="col-3 d-none d-md-block">
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card">
+            <div class="card-body base-bg-color">
+                <div>
+                    <form [formGroup]="loginForm" class="m-5" (submit)="login()">
+                        <div class="mr-5 ml-5">
+                            <label for="email" class="form-label text-light">Email address</label>
+                            <input type="email" formControlName="username" class="form-control" id="email"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="mt-3 mr-5 ml-5">
+                            <label for="password" class="form-label text-light">Password</label>
+                            <input type="password" formControlName="password" class="form-control" id="password"
+                                placeholder="Enter your password">
+                        </div>
+                        <div *ngIf="isLoginFailed" class="mt-3 mr-5 ml-5">
+                            <div class="alert alert-danger" role="alert">
+                                Failed to login. Please try again..
+                            </div>
+                        </div>
+
+                        <div class="mt-3 mr-5 ml-5 text-center">
+                            <button type="submit" class="btn btn-fill btn-light">Submit</button>
+                        </div>
+
+                        <div class="mt-3 mr-5 ml-5 text-center">
+                            <button type="button" routerLink="/signup" class="btn btn-link text-light">Don't you have
+                                account?</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div *ngIf="isLoading" class="d-flex justify-content-center min-h-300">
+            <div class="spinner-border text-light" role="status">
+               
+            </div>
+        </div> -->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-3 d-none d-md-block">
+
+    </div>
+</div>
