@@ -32,7 +32,7 @@
 # EXPOSE 3000/tcp
 # # NOTE: don't add CMD, it's in base IMG and uses `npm run start`
 ### STAGE 1: Build ###
-FROM node:16-alpine
+FROM image-registry.openshift-image-registry.svc:5000/kabanero/node
 USER root
 RUN mkdir /opt/app
 WORKDIR /opt/app/
