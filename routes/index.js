@@ -7,11 +7,8 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/readiness', function (req, res) {
-  return res.status(200).json({ status: 'OK' });
-});
- router.get('/liveness', function (req, res) {
-  return res.status(200).json({ status: 'OK' });
+routes.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname + '../src/index.html'));
 });
 
 module.exports = router;

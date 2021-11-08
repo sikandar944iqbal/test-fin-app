@@ -7,6 +7,8 @@ import { HeaderComponent } from './layout/header.component';
 import { HomeComponent } from './pages/home.component';
 import { AboutComponent } from './pages/about.component';
 
+import { Routes, RouterModule } from '@angular/router';
+
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { LoginComponent } from './pages/login.component';
 import { CommonModule } from '@angular/common';
@@ -19,6 +21,8 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { ReadinessComponent } from './pages/readiness.component';
 import { LivenessComponent } from './pages/liveness.component';
+
+
 
 
 @NgModule({

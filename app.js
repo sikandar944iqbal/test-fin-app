@@ -112,17 +112,17 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-// app.get('/liveness', (req, res) => {
-//  // logger(req, res);
-//   res.status(200).json({msg:
-//     'Application is Live'});
-// });
+app.get('/liveness', (req, res) => {
+ // logger(req, res);
+  res.status(200).json({msg:
+    'Application is Live'});
+});
 
-// app.get('/readiness', (req, res) => {
-//  //logger(req, res);
-//   res.status(200).json({msg:
-// 'Application is Ready'});
-// });
+app.get('/readiness', (req, res) => {
+ //logger(req, res);
+  res.status(200).json({msg:
+'Application is Ready'});
+});
 
 
 // app.get('/health', (req, res) => {
